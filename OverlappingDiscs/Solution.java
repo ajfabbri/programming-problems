@@ -64,5 +64,56 @@ class Solution {
         
         return intersectCount;
     }
+
+    private class TestCase {
+    	int[] discRadii;
+	int numOverlapPairs;
+    }
+
+    private void Test() {
+
+    	TestCase[] cases = new TestCase[] {
+		new TestCase() {{
+			discRadii = new int[] {0,0,0,1,0,0,1,2,0,0,0};
+			numOverlapPairs = 7;
+		}},
+		new TestCase() {{
+			discRadii = new int[] {2,0,0,1,0,0,1,2,0,0,0};
+			numOverlapPairs = 10;
+		}},
+		new TestCase() {{
+			discRadii = new int[] {10,0,0,0,0,0,0,0,0,0,0};
+			numOverlapPairs = 10;
+		}},
+		new TestCase() {{
+			discRadii = new int[] {5,5,5};
+			numOverlapPairs = 3;
+		}},
+		new TestCase() {{
+			discRadii = new int[] {10,0,0,0,0,0,0,0,0,0,0,
+				5,5,5};
+			numOverlapPairs = 13 + 3 + 4 + 5 + 3;
+		}}
+	};
+    	Solution s = new Solution();
+	int i = 0;
+    	for (TestCase test : cases) {
+	    System.out.printf("Test %d: ", i++);
+	    int result = s.solution(test.discRadii);
+	    if (result != test.numOverlapPairs) {
+		    System.out.printf("FAILED (expect %d got %d)\n",
+			    test.numOverlapPairs, result);
+	    } else {
+		    System.out.println("SUCCESS");
+	    }
+	}
+
+    }
+
+    public static void main(String args[]) {
+	
+    	new Solution().Test();
+    }
 }
+/*vim tabstop=8 expandtab shiftwidth=4 softtabstop=4 */
 
