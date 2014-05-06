@@ -93,8 +93,27 @@ class Solution {
 			discRadii = new int[] {10,0,0,0,0,0,0,0,0,0,0,
 				5,5,5};
 			numOverlapPairs = 13 + 3 + 4 + 5 + 3;
-		}}
+		}},
+		new TestCase() // Last one is big one, make programmatically below
 	};
+
+	// make big test case
+	int[] subBig = {   0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+	final int multiplier = 100_000_000;
+	final int subSize = subBig.length;
+	final int bigSize = subSize * multiplier;
+	int bigInput[] = new int[bigSize];
+	for (int i = 0; i<multiplier; i++) {
+		for (int j = 0; j < subSize; j++) {
+			bigInput[i*subSize + j] = subBig[j];
+		}
+	}
+
+	cases[cases.length-1].discRadii = bigInput;
+	cases[cases.length-1].numOverlapPairs = 20 * multiplier;
+
     	Solution s = new Solution();
 	int i = 0;
     	for (TestCase test : cases) {
